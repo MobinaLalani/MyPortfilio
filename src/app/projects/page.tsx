@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Frontend projects with details and technologies used",
 };
 
-export default function ProjectsPage() {
+export default function Projects() {
   return (
     <div>
       <h1 className="text-2xl font-bold tracking-tight">Projects</h1>

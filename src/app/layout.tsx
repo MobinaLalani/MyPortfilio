@@ -30,10 +30,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${didot.variable} ${geistMono.variable} antialiased`}>
-        <Navbar />
-        <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10">
+        {/* <Navbar /> */}
+        <div className="pt-14">
+          {" "}
+          {/* ارتفاع Navbar = حدود 56px → pt-14 مناسب */}
           {children}
-        </main>
+        </div>
         <Footer />
       </body>
     </html>

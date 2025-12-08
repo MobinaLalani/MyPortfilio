@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Skills, interests, and experience of a frontend developer",
 };
 
-export default function AboutPage() {
+export default function About() {
   return (
     <div className="prose dark:prose-invert max-w-none">
       <h1>About Me</h1>
