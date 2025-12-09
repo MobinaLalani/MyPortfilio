@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link"; // 👈 اضافه شد
-import image from "../../../../public/image/Screenshot-2025-12-02-144629.png";
+import image from "../../../../public/image/heroPic.png";
 
 function HeroSection() {
   return (
@@ -28,10 +28,8 @@ function HeroSection() {
           </nav>
         </div>
       </header>
-
-      {/* --- Hero Image بخش --- */}
       <div className="w-full flex justify-center ">
-        <div className="w-[500px] h-[700px] relative">
+        <div className="w-[500px] h-[90vh] relative">
           <Image
             src={image}
             alt="Hero Image"
