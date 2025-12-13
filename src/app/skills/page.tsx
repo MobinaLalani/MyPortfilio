@@ -1,11 +1,10 @@
-import React from 'react'
-
+import React from 'react';
+import Index from "@/components/section/skills";
 function Skills() {
   return (
-    <div>
-      dfff
-    </div>
-  )
+    // <div>sd</div>
+    <Index/>
+  );
 }
 
 export default Skills;

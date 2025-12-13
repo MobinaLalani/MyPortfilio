@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import aboutPic from "../../../public/image/aboutPic.png";
-import AboutSection from "@/components/section/hero/about";
+import AboutSection from "@/components/section/about";
 
 export const dynamic = "force-static";
 

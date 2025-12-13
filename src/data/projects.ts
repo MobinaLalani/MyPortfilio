@@ -1,3 +1,7 @@
+import HalazLogo from "../../public/image/halazProject/halazLogo.png";
+import DashboardImg from "../../public/image/projects/dashboard.png";
+import LandingImg from "../../public/image/projects/landing.png";
+
 export type Project = {
   slug: string;
   title: string;
@@ -5,12 +9,14 @@ export type Project = {
   stack: string[];
   repo?: string;
   demo?: string;
+  img: any; // نوع برای import شده از next/image
 };
 
 export const projects: Project[] = [
   {
     slug: "design-system",
     title: "Design System & UI Kit",
+    img: HalazLogo,
     description:
       "A reusable UI component library with comprehensive documentation.",
     stack: ["React", "TypeScript", "TailwindCSS", "Storybook"],
@@ -19,6 +25,7 @@ export const projects: Project[] = [
   {
     slug: "dashboard-analytics",
     title: "Dashboard Analytics",
+    img: DashboardImg,
     description:
       "Analytical dashboard with interactive charts, advanced filters, and state management.",
     stack: ["Next.js", "Zustand", "Chart.js"],
@@ -27,6 +34,7 @@ export const projects: Project[] = [
   {
     slug: "landing-page",
     title: "Landing Page",
+    img: LandingImg,
     description: "SEO-optimized landing page with fast load times.",
     stack: ["Next.js", "TailwindCSS", "SEO"],
     repo: "https://github.com/",
