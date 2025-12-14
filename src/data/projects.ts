@@ -23,6 +23,15 @@ export const projects: Project[] = [
     repo: "https://github.com/",
   },
   {
+    slug: "design-system",
+    title: "Design System & UI Kit",
+    img: HalazLogo,
+    description:
+      "A reusable UI component library with comprehensive documentation.",
+    stack: ["React", "TypeScript", "TailwindCSS", "Storybook"],
+    repo: "https://github.com/",
+  },
+  {
     slug: "dashboard-analytics",
     title: "Dashboard Analytics",
     img: HalazLogo,
