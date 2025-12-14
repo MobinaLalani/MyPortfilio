@@ -13,8 +13,10 @@ export default function Projects() {
   return (
     <div>
       <h1 className="text-2xl font-bold tracking-tight">Projects</h1>
-      <p className="mt-2 text-foreground/70">A collection of frontend work focusing on UX and performance.</p>
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <p className="mt-2 text-foreground/70">
+        A collection of frontend work focusing on UX and performance.
+      </p>
+      <div className="mt-6 p-5 grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-16 items-center justify-items-center">
         {projects.map((p) => (
           <ProjectCard key={p.slug} project={p} />
         ))}

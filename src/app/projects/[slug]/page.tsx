@@ -11,8 +11,8 @@ export default function ProjectCard({ slug, title, image }: Props) {
   return (
     <Link href={`/projects/${slug}`}>
       <div className="group relative h-[260px] w-[260px] overflow-hidden rounded-2xl cursor-pointer shadow-lg">
-        {/* تصویر پروژه */}
-        <Image src={image} alt={title} fill className="object-cover" />
+        تصویر پروژه
+        {/* <Image src={image} alt={title} fill className="object-cover" /> */}
 
         {/* Overlay نیمه شفاف با blur */}
         <div
