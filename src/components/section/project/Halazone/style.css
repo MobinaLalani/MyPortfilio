@@ -1,0 +1,117 @@
+.mySwiper {
+  width: 400px;
+  height: 320px;
+  margin: 40px auto;
+}
+
+/* جلوگیری از تداخل کلیک Swiper */
+.swiper-slide {
+  pointer-events: none;
+}
+
+.slide-inner {
+  pointer-events: auto; /* اجازه کلیک به داخل اسلاید */
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  position: relative; /* برای دکمه ذره‌بین */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: default;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* overlay روی کارت */
+.slide-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 18px;
+}
+
+.slide-inner > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Zoom Button ===== */
+.zoom-btn {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 2;
+}
+
+.zoom-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: scale(1.1);
+}
+
+/* ===== Fullscreen ===== */
+.fullscreen-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: zoom-out;
+}
+
+.fullscreen-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 12px;
+  animation: zoomIn 0.3s ease;
+}
+
+.close-btn {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

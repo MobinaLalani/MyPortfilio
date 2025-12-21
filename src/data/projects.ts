@@ -14,7 +14,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "design-system",
+    slug: "Halazone",
     title: "Design System & UI Kit",
     img: HalazLogo,
     description:

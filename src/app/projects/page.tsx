@@ -1,5 +1,7 @@
 import ProjectCard from "@/components/ProjectCard";
+import DynamicTabs from "@/components/ui/DynamicTabs";
 import { projects } from "@/data/projects";
+import ProjectsClient from "@/components/ProjectsClient";
 import type { Metadata } from "next";
 
 export const dynamic = "force-static";
@@ -23,12 +25,7 @@ export default function Projects() {
         </p>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 BG-">
-        {projects.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
-        ))}
-      </div>
+      <ProjectsClient projects={projects} />
     </section>
   );
 }
