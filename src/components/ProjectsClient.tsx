@@ -1,76 +1,75 @@
 "use client";
 
-import ProjectCard from "@/components/ProjectCard";
-import DynamicTabs from "@/components/ui/DynamicTabs";
 import { useState } from "react";
 import type { Project } from "@/data/projects";
+import ProjectCard from "@/components/ProjectCard";
 import HalazoneIndex from "@/components/section/project/Halazone";
 
 type Props = { projects: Project[] };
 
 export default function ProjectsClient({ projects }: Props) {
-  const tabs = projects.map((p) => {
-    const isHalazone = p.slug.toLowerCase() === "halazone";
-    return {
-      label: p.slug,
-      content: isHalazone ? (
-        <HalazoneIndex />
-      ) : (
-        <div className="rounded-xl border border-border p-4">
-          <h2 className="text-xl font-semibold">{p.title}</h2>
-          <p className="mt-2 text-foreground/80">{p.description}</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {p.stack.map((s) => (
-              <span key={s} className="px-3 py-1 rounded-full border text-sm">
-                {s}
-              </span>
-            ))}
-          </div>
-          <div className="mt-4 flex gap-4">
-            {p.repo && (
-              <a
-                href={p.repo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary"
-              >
-                Repo
-              </a>
-            )}
-            {p.demo && (
-              <a
-                href={p.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary"
-              >
-                Demo
-              </a>
-            )}
-          </div>
-        </div>
-      ),
-    };
-  });
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const activeProject = projects[activeIndex];
+
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 ">
-        {projects.map((p, i) => (
+      {/* ===== Project Cards ===== */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-64">
+        {projects.map((project, index) => (
           <ProjectCard
-            key={p.slug}
-            project={p}
-            onClick={() => setActiveIndex(i)}
+            key={project.slug}
+            project={project}
+            isActive={activeIndex === index}
+            onClick={() => setActiveIndex(index)}
           />
         ))}
       </div>
-      <div className="mt-6">
-        <DynamicTabs
-          className="-mt-2"
-          tabs={tabs}
-          activeIndex={activeIndex}
-          onChangeActive={setActiveIndex}
-        />
+
+      {/* ===== Project Content ===== */}
+      <div className="mt-16 px-16">
+        {activeProject.slug.toLowerCase() === "halazone" ? (
+          <HalazoneIndex />
+        ) : (
+          <div className="rounded-xl border border-border p-6 max-w-4xl">
+            <h2 className="text-2xl font-semibold">{activeProject.title}</h2>
+
+            <p className="mt-3 text-foreground/80">
+              {activeProject.description}
+            </p>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {activeProject.stack.map((s) => (
+                <span key={s} className="px-3 py-1 rounded-full border text-sm">
+                  {s}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-6 flex gap-4">
+              {activeProject.repo && (
+                <a
+                  href={activeProject.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-medium"
+                >
+                  Repo
+                </a>
+              )}
+              {activeProject.demo && (
+                <a
+                  href={activeProject.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-medium"
+                >
+                  Demo
+                </a>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

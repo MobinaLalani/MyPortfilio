@@ -5,7 +5,7 @@ import image from "../../../../public/image/heroPic.png";
 
 function HeroSection() {
   return (
-    <div className="w-full bg-[#BEB7AD]">
+    <div className="w-[99%] bg-[#BEB7AD]">
       {/* --- Navbar --- */}
       <header className="fixed top-0 z-50  border-b border-border w-full bg-inherit">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">

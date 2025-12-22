@@ -1,12 +1,18 @@
 "use client";
+
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
+import clsx from "clsx";
 
-type Props = { project: Project; onClick?: (project: Project) => void };
+type Props = {
+  project: Project;
+  onClick?: (project: Project) => void;
+  isActive?: boolean;
+};
 
-export default function ProjectCard({ project, onClick }: Props) {
+export default function ProjectCard({ project, onClick, isActive }: Props) {
   function generateDiagonalMask(split: number) {
     return `linear-gradient(
       135deg,
@@ -25,14 +31,32 @@ export default function ProjectCard({ project, onClick }: Props) {
   const maskImage = useTransform(splitSpring, (v) => generateDiagonalMask(v));
 
   const card = (
-    <div
-      className="group relative h-[300px] w-[300px] bg-[#cac2b7] overflow-hidden rounded-[18px] cursor-pointer shadow-lg flex items-center justify-center"
+    <motion.div
+      layout
+      whileHover={{ scale: 1.03 }}
+      className={clsx(
+        "group relative h-[300px] w-[300px] bg-[#cac2b7] overflow-hidden rounded-[18px] cursor-pointer flex items-center justify-center transition-all duration-300",
+        isActive ? "ring-2 ring-primary shadow-2xl scale-[1.04]" : "shadow-lg"
+      )}
       onClick={onClick ? () => onClick(project) : undefined}
     >
-      <Image src={project.img} alt={project.title} className="object-cover  p-4" />
+      {/* Image */}
+      <Image
+        src={project.img}
+        alt={project.title}
+        className="object-cover p-4"
+        fill={false}
+      />
+
+      {/* Active overlay */}
+      {isActive && (
+        <div className="absolute inset-0 rounded-[18px] bg-primary/10 pointer-events-none" />
+      )}
+
+      {/* Hover mask */}
       <motion.div
         className="absolute inset-0 bg-white/20 backdrop-blur-md"
-        style={{ WebkitMaskImage: maskImage, maskImage: maskImage }}
+        style={{ WebkitMaskImage: maskImage, maskImage }}
         onHoverStart={() => split.set(0)}
         onHoverEnd={() => split.set(50)}
       >
@@ -42,14 +66,15 @@ export default function ProjectCard({ project, onClick }: Props) {
           whileHover={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className=" leading-6 mb-8">{project.description}</p>
+          <p className="leading-6 mb-8 text-foreground">
+            {project.description}
+          </p>
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 
-  if (onClick) {
-    return card;
-  }
+  if (onClick) return card;
+
   return <Link href={`/projects/${project.slug}`}>{card}</Link>;
 }
