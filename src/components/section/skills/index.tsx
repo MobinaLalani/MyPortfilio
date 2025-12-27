@@ -1,22 +1,50 @@
+"use client"
 import Image from "next/image";
-import SkillPic from "../../../../public/image/skillsPic.jpeg";
+import { useEffect, useState } from "react";
+import SkillPic from "../../../../public/image/skillsPic.png";
+import heroBackGround from "../../../../public/image/heroSectionIconPic.png";
 
 export default function UGCHero() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative w-full overflow-hidden">
-      {/* Background image */}
-      <Image
-        src={SkillPic}
-        alt="UGC background"
-        className="w-full h-auto"
-        priority
+      {/* Fixed Background */}
+      <div
+        className="absolute inset-0 -z-20 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${heroBackGround.src})`,
+          backgroundAttachment: "fixed",
+        }}
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
+      {/* SkillPic with parallax */}
+      <div
+        className="relative z-10 w-full"
+        style={{ transform: `translateY(${scrollY * 0.2}px)` }} // سبک parallax
+      >
+        <Image
+          src={SkillPic}
+          alt="UGC background"
+          className="w-full h-auto"
+          priority
+        />
+      </div>
 
-      {/* Content */}
-      <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-2 gap-8 p-6 md:p-16 text-white">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/40 -z-10" />
+
+      {/* Content with parallax */}
+      <div
+        className="absolute inset-0 grid grid-cols-1 md:grid-cols-2 gap-8 p-6 md:p-16 text-white z-20"
+        style={{ transform: `translateY(${scrollY * 0.3}px)` }} // کمی سریع‌تر از SkillPic
+      >
         {/* Right content */}
         <div className="flex flex-col justify-start pt-18">
           <h2 className="mb-20 text-4xl md:text-5xl font-serif">

@@ -3,7 +3,6 @@ import Index from '../../components/section/hero/index'
 
 function Hero() {
   return (
-  
   <Index/>
   )
 }
