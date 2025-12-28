@@ -12,11 +12,11 @@ export default function HorizontalScrollRows() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => t,
-      lerp: 0.1,
+      duration: 1.5,        // کمتر = اسکرول سریع‌تر
+      easing: (t) => t,     // linear easing
+      lerp: 0.2,            // سرعت دنبال کردن اسکرول
       orientation: "vertical",
-      wheelMultiplier: 1,
+      wheelMultiplier: 1.5, // حساسیت بیشتر اسکرول
       touchMultiplier: 2,
     });
 
@@ -33,13 +33,18 @@ export default function HorizontalScrollRows() {
     return () => lenis.destroy();
   }, []);
 
+  // ضریب حرکت افقی rowها
+  const rowSpeed = 0.5;
+
   return (
     <div className="w-full overflow-x-hidden">
       <div className="flex flex-col gap-32 px-6 md:px-16 mt-12">
         {/* Row 1 */}
         <section
           className="flex items-center w-full gap-6 md:gap-12"
-          style={{ transform: `translateX(${scrollY * 0.2}px)` }}
+          style={{
+            transform: `translateX(${scrollY * rowSpeed}px)`,
+          }}
         >
           <div className="md:w-1/4 flex-shrink-0">
             <Image
@@ -63,8 +68,18 @@ export default function HorizontalScrollRows() {
         {/* Row 2 */}
         <section
           className="flex items-center w-full gap-6 md:gap-12"
-          style={{ transform: `translateX(${scrollY * -0.2}px)` }}
+          style={{
+            transform: `translateX(${scrollY * -rowSpeed}px)`,
+          }}
         >
+          <div className="md:w-1/4 flex-shrink-0">
+            <Image
+              src={Pic2}
+              alt="Animation Pic"
+              className="w-full h-auto rounded-lg shadow-lg"
+              priority
+            />
+          </div>
           <div className="flex-1">
             <h2 className="text-6xl md:text-8xl font-serif leading-[1] mb-4">
               purer Genuss
@@ -73,14 +88,6 @@ export default function HorizontalScrollRows() {
             <p className="text-xl md:text-2xl opacity-90">
               Enjoy refined moments with stunning visuals.
             </p>
-          </div>
-          <div className="md:w-1/4 flex-shrink-0">
-            <Image
-              src={Pic2}
-              alt="Animation Pic"
-              className="w-full h-auto rounded-lg shadow-lg"
-              priority
-            />
           </div>
         </section>
       </div>
