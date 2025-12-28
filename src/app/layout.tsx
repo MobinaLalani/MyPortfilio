@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import SmoothScrollProvider from "../provider/SmoothScrollProvider";
 import Footer from "@/components/Footer";
 import { didot } from "./fonts";
 
@@ -30,12 +31,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${didot.variable} ${geistMono.variable} antialiased `}>
-        {/* <Navbar /> */}
-        <div className="pt-14">
+        <SmoothScrollProvider>
+           <div className="pt-14">
+
           {" "}
           {/* ارتفاع Navbar = حدود 56px → pt-14 مناسب */}
           {children}
         </div>
+          </SmoothScrollProvider>
+        {/* <Navbar /> */}
+       
         <Footer />
       </body>
     </html>

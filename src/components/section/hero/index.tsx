@@ -38,7 +38,6 @@ export default function HeroSection() {
   );
 
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
-  const [scrollY, setScrollY] = useState(0);
 
   // viewport size
   useEffect(() => {
@@ -49,45 +48,35 @@ export default function HeroSection() {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
-  // scroll listener
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   if (!viewport.width) return null;
 
-  const targetY = viewport.height / 2;
+  const centerY = viewport.height * 0.5;
 
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background fixed */}
       <div
-        className="absolute inset-0 -z-10 bg-cover bg-center"
+        className="absolute inset-0 -z-20 bg-cover bg-center"
         style={{
           backgroundImage: `url(${heroBackGround.src})`,
-          backgroundAttachment: "fixed", // این باعث ثابت موندن بک‌گراند میشه
+          backgroundAttachment: "fixed",
         }}
       />
 
-      {/* Skill icons */}
+      {/* Skill icons (NO SCROLL EFFECT) */}
       <div className="absolute inset-0 pointer-events-none">
         {skills.map((skill, index) => {
           const randY = seededRandom(index + 100);
           const startX = ((index + 0.5) / skills.length) * viewport.width;
           const scatteredY = randY * viewport.height;
           const fromY =
-            scatteredY < targetY ? scatteredY - 180 : scatteredY + 180;
-
-          const parallaxSpeed = 0.2 + index * 0.05;
-          const parallaxY = targetY + scrollY * parallaxSpeed;
+            scatteredY < centerY ? scatteredY - 200 : scatteredY + 200;
 
           return (
             <motion.div
               key={skill.alt}
               initial={{ x: startX, y: fromY, opacity: 0, scale: 0.8 }}
-              animate={{ x: startX, y: parallaxY, opacity: 1, scale: 1 }}
+              animate={{ x: startX, y: centerY, opacity: 1, scale: 1 }}
               transition={{
                 duration: 1.3,
                 delay: index * 0.1,
