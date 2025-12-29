@@ -63,6 +63,16 @@ export default function HeroSection() {
         }}
       />
 
+      {/* ✅ White glow on background */}
+      <div
+        className="
+        pointer-events-none
+        absolute inset-x-0 bottom-0 h-1/3
+        bg-gradient-to-t from-[#f0ece9] via-white/60 to-transparent
+        z-[-10]
+      "
+      />
+
       {/* Skill icons (NO SCROLL EFFECT) */}
       <div className="absolute inset-0 pointer-events-none">
         {skills.map((skill, index) => {
@@ -100,8 +110,21 @@ export default function HeroSection() {
       </div>
 
       {/* Hero Image */}
-      <div className="absolute inset-x-0 bottom-0 z-10 flex justify-center">
+      <div className="absolute inset-x-0 bottom-0 z-5 flex justify-center">
         <div className="w-[90vw] md:w-[70vw] lg:w-[60vw] h-[55vh] md:h-[70vh] lg:h-[80vh]">
+          <div
+            className="
+            pointer-events-none
+            absolute bottom-0 left-1/2
+            w-80 h-40
+            -translate-x-1/2
+            bg-gradient-to-t from-[#f0ece9] via-[#f0ece9]/30 to-transparent
+        
+          
+            z-50
+          "
+          />
+
           <Image
             src={heroPic}
             alt="Frontend Developer"

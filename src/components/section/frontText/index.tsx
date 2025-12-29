@@ -14,18 +14,27 @@ export default function HorizontalScrollRows() {
   const [row1Progress, setRow1Progress] = useState(0);
   const [row2Progress, setRow2Progress] = useState(0);
 
-  const rowSpeed = 250; // px
-
+  const rowSpeed = 180; // px
+  const maxProgress = 0.4;
+  // فقط تا وسط
+const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
   /* ---------------- helper ---------------- */
-  const calculateProgress = (el: HTMLElement) => {
-    const rect = el.getBoundingClientRect();
-    const vh = window.innerHeight;
+const calculateProgress = (el: HTMLElement) => {
+  const rect = el.getBoundingClientRect();
+  const vh = window.innerHeight;
 
-    const progress = (vh - rect.top) / (vh + rect.height);
-    return Math.min(Math.max(progress, 0), 1);
-  };
+  let raw = (vh - rect.top) / (vh + rect.height);
 
-  /* ---------------- Lenis ---------------- */
+  // clamp اولیه
+  raw = Math.min(Math.max(raw, 0), maxProgress);
+
+  // normalize
+  const t = raw / maxProgress;
+
+  // easing نرم نزدیک توقف
+  return easeOutCubic(t);
+};
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -44,7 +53,7 @@ export default function HorizontalScrollRows() {
       }
     };
 
-    lenis.on("scroll", onScroll);
+    lenis.on("scroll", onScroll); // ✅ این خط حیاتی بود
 
     const raf = (time: number) => {
       lenis.raf(time);
@@ -52,13 +61,14 @@ export default function HorizontalScrollRows() {
     };
     requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
   return (
     <div className="w-full overflow-x-hidden">
-      <div className="flex flex-col gap-40 px-6 md:px-16 py-24">
-
+      <div className="flex flex-col gap-20 px-6 md:px-16 py-24">
         {/* ---------------- Row 1 ---------------- */}
         <section
           ref={row1Ref}
@@ -114,7 +124,6 @@ export default function HorizontalScrollRows() {
             />
           </div>
         </section>
-
       </div>
     </div>
   );
