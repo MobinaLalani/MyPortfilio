@@ -16,6 +16,7 @@ import TailwindIconPic from "../../../../public/image/TailwindIconPic.png";
 import html5 from "../../../../public/image/html-5.png";
 import javaScriptIconPic from "../../../../public/image/javaScriptIconPic.png";
 import typescriptIconPic from "../../../../public/image/typescriptIconPic.png";
+import BackgroundImage from "./components/BackgroundImage";
 
 // random پایدار
 const seededRandom = (seed: number) => {
@@ -55,85 +56,30 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background fixed */}
-      <div
-        className="absolute inset-0 -z-20 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${heroBackGround.src})`,
-          backgroundAttachment: "fixed",
-        }}
-      />
+      <BackgroundImage />
 
       {/* ✅ White glow on background */}
       <div
         className="
-        pointer-events-none
-        absolute inset-x-0 bottom-0 h-1/3
-        bg-gradient-to-t from-[#f0ece9] via-white/60 to-transparent
-        z-[-10]
-      "
+      pointer-events-none
+      absolute inset-x-0 bottom-0 h-1/3
+      bg-gradient-to-t from-[#f0ece9] via-white/60 to-transparent
+      z-[-10]
+    "
       />
 
-      {/* Skill icons (NO SCROLL EFFECT) */}
-      <div className="absolute inset-0 pointer-events-none">
-        {skills.map((skill, index) => {
-          const randY = seededRandom(index + 100);
-          const startX = ((index + 0.5) / skills.length) * viewport.width;
-          const scatteredY = randY * viewport.height;
-          const fromY =
-            scatteredY < centerY ? scatteredY - 200 : scatteredY + 200;
-
-          return (
-            <motion.div
-              key={skill.alt}
-              initial={{ x: startX, y: fromY, opacity: 0, scale: 0.8 }}
-              animate={{ x: startX, y: centerY, opacity: 1, scale: 1 }}
-              transition={{
-                duration: 1.3,
-                delay: index * 0.1,
-                ease: "easeOut",
-              }}
-              className="absolute"
-              style={{ transform: "translate(-50%, -50%)" }}
-            >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center opacity-90">
-                <Image
-                  src={skill.src}
-                  alt={skill.alt}
-                  width={90}
-                  height={90}
-                  className="object-contain"
-                />
-              </div>
-            </motion.div>
-          );
-        })}
+      {/* متن بزرگ سمت چپ */}
+      <div className="absolute top-1/6 left-6 lg:left-20 z-10">
+        <h1 className="text-8xl md:text-9xl font-bold text-white leading-tight">
+          MOBINA LALANI
+        </h1>
+        <h3 className="text-2xl md:text-3xl font-semibold text-white leading-tight mt-4">
+          FrontEnd Developer
+        </h3>
       </div>
 
       {/* Hero Image */}
-      <div className="absolute inset-x-0 bottom-0 z-5 flex justify-center">
-        <div className="w-[90vw] md:w-[70vw] lg:w-[60vw] h-[55vh] md:h-[70vh] lg:h-[80vh]">
-          <div
-            className="
-            pointer-events-none
-            absolute bottom-0 left-1/2
-            w-80 h-40
-            -translate-x-1/2
-            bg-gradient-to-t from-[#f0ece9] via-[#f0ece9]/30 to-transparent
-        
-          
-            z-50
-          "
-          />
-
-          <Image
-            src={heroPic}
-            alt="Frontend Developer"
-            fill
-            priority
-            className="object-contain select-none"
-          />
-        </div>
-      </div>
+    
     </section>
   );
 }
