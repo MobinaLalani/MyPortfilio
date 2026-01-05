@@ -13,6 +13,7 @@ import NextjsIconPic from "../../../../public/image/NextjsIconPic.png";
 import ReactIconPic from "../../../../public/image/ReactIconPic.png";
 import ReduxIconPic from "../../../../public/image/ReduxIconPic.png";
 import TailwindIconPic from "../../../../public/image/TailwindIconPic.png";
+
 import html5 from "../../../../public/image/html-5.png";
 import javaScriptIconPic from "../../../../public/image/javaScriptIconPic.png";
 import typescriptIconPic from "../../../../public/image/typescriptIconPic.png";

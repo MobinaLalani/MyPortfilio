@@ -16,9 +16,9 @@ export default function HorizontalScrollRows() {
 
   const rowSpeed = 180; // px
   const maxProgress = 0.4;
-  // فقط تا وسط
+
 const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
-  /* ---------------- helper ---------------- */
+
 const calculateProgress = (el: HTMLElement) => {
   const rect = el.getBoundingClientRect();
   const vh = window.innerHeight;

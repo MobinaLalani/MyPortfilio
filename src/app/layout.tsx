@@ -30,17 +30,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${didot.variable} ${geistMono.variable} antialiased `}>
+      <body className={`${didot.variable} ${geistMono.variable} antialiased  overflow-x-hidden`}>
         <SmoothScrollProvider>
            <div className="pt-14">
 
           {" "}
-          {/* ارتفاع Navbar = حدود 56px → pt-14 مناسب */}
           {children}
         </div>
           </SmoothScrollProvider>
-        {/* <Navbar /> */}
-       
+
         <Footer />
       </body>
     </html>
