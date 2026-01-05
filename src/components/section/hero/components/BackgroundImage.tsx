@@ -30,47 +30,53 @@ export default function BackgroundImage() {
     return [row1, row2, row3];
   }, []);
 
-  const rowSpeed = [60, 90, 120]; // سرعت حرکت هر ردیف
+  const rowSpeed = [60, 70, 20];
 
   return (
-    <div className="absolute inset-0 -z-10">
-      {/* Overlay روی تمام پس‌زمینه */}
+    <div className="absolute inset-0 -z-10 overflow-hidden">
       <div className="absolute inset-0 bg-black/50 z-10 pointer-events-none" />
 
-      {rows.map((pics, rowIndex) => (
-        <div
-          key={rowIndex}
-          className="absolute left-0 w-full flex"
-          style={{
-            top: `${rowIndex * 30}%`,
-            height: "29%",
-          }}
-        >
-          <motion.div
-            className="flex flex-nowrap"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              repeat: Infinity,
-              duration: rowSpeed[rowIndex],
-              ease: "linear",
+      {rows.map((pics, rowIndex) => {
+        const isEven = rowIndex % 2 === 0;
+
+        return (
+          <div
+            key={rowIndex}
+            className="absolute left-0 w-full flex"
+            style={{
+              top: `${rowIndex * 30}%`,
+              height: "29%",
             }}
           >
-            {pics.concat(pics).map((pic, index) => (
-              <div
-                key={index}
-                className="w-[50vw] h-full flex-shrink-0 relative mx-2"
-              >
-                <Image
-                  src={pic}
-                  alt={`bg-${rowIndex}-${index}`}
-                  fill
-                  className="object-cover rounded-2xl"
-                />
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      ))}
+            <motion.div
+              className="flex flex-nowrap"
+              animate={{
+                x: isEven ? ["0%", "-50%"] : ["-50%", "0%"],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: rowSpeed[rowIndex],
+                ease: "linear",
+              }}
+            >
+              {pics.concat(pics).map((pic, index) => (
+                <div
+                  key={index}
+                  className="w-[50vw] h-full flex-shrink-0 relative mx-2"
+                >
+                  <Image
+                    src={pic}
+                    alt={`bg-${rowIndex}-${index}`}
+                    fill
+                    className="object-cover rounded-2xl"
+                    priority={rowIndex === 0}
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        );
+      })}
     </div>
   );
 }

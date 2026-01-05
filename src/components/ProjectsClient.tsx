@@ -15,7 +15,7 @@ export default function ProjectsClient({ projects }: Props) {
   return (
     <>
       {/* ===== Project Cards ===== */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-64">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
         {projects.map((project, index) => (
           <ProjectCard
             key={project.slug}
@@ -27,7 +27,7 @@ export default function ProjectsClient({ projects }: Props) {
       </div>
 
       {/* ===== Project Content ===== */}
-      <div className="mt-16 px-16">
+      <div className="mt-16 px-4 sm:px-8 lg:px-16">
         {activeProject.slug.toLowerCase() === "halazone" ? (
           <HalazoneIndex />
         ) : (
