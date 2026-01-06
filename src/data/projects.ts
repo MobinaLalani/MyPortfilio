@@ -7,6 +7,7 @@ import supervisor2 from '../../public/image/supervisor/supervisor2.png';
 import supervisor3 from '../../public/image/supervisor/supervisor3.png';
 import userInfo from "../../public/image/panelPic/createBuffer.png";
 import wallet from "../../public/image/panelPic/walletPic.png";
+import HalazMapProject from '../../public/image/HalazMapProject.png'
 import parcelDetail from "../../public/image/panelPic/parcelDetail.png";
 import fleetPic from "../../public/image/managementPic/managment-fleet.png";
 import AdminDashboardPic from '../../public/image/managementPic/AdminDashboard.png';
@@ -54,9 +55,9 @@ export const projects: Project[] = [
     repo: "https://github.com/",
   },
   {
-    slug: "design-system1",
-    title: "Design System & UI Kit",
-    img: HalazLogo,
+    slug: "HalazMap",
+    title: "HalazMapProject",
+    img: HalazMapProject,
     description:
       "A reusable UI component library with comprehensive documentation.",
     stack: ["React", "TypeScript", "TailwindCSS", "Storybook"],
