@@ -1,7 +1,16 @@
 import HalazLogo from "../../public/image/halazProject/halazLogo.png";
-// import DashboardImg from "../../public/image/projects/dashboard.png";
-// import LandingImg from "../../public/image/projects/landing.png";
-
+import LandingPic1 from '../../public/image/Landing/Landing3.png';
+import LandingPic2 from '../../public/image/Landing/Landing2.png';
+import LandingPic3 from '../../public/image/Landing/Landing1.png';
+import supervisor1 from '../../public/image/supervisor/supervisor1.png';
+import supervisor2 from '../../public/image/supervisor/supervisor2.png';
+import supervisor3 from '../../public/image/supervisor/supervisor3.png';
+import userInfo from "../../public/image/panelPic/createBuffer.png";
+import wallet from "../../public/image/panelPic/walletPic.png";
+import parcelDetail from "../../public/image/panelPic/parcelDetail.png";
+import fleetPic from "../../public/image/managementPic/managment-fleet.png";
+import AdminDashboardPic from '../../public/image/managementPic/AdminDashboard.png';
+import bundleListPic from "../../public/image/managementPic/managment-bundleList.png";
 export type Project = {
   slug: string;
   title: string;
@@ -22,7 +31,7 @@ export type ProjectDetailSection = {
 export type ProjectSection = {
   title: string;
   paragraphs: string[];
-  images: string[];
+  images: any[];
 };
 
 export type ProjectDetails = {
@@ -83,55 +92,40 @@ export type ProjectOverview = {
 export const projectDetails: ProjectDetails = {
   Halazone: {
     management: {
-      title: "Project Management System",
+      title: "Halazone-LandingPage",
       paragraphs: [
-        "The management system of Halazone is designed to streamline workflows, manage teams, and monitor performance efficiently.",
-        "It provides administrators with full control over operations, roles, and system configurations through an intuitive interface.",
+        "The Halazone management system is a logistics-focused platform designed to manage and optimize the flow of shipment delivery and storage.",
+        "It is a large-scale system composed of multiple smaller sub-projects, each handling a specific part of the logistics process to ensure efficiency, scalability, and reliability.",
       ],
-      images: [
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
-        "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
-      ],
+      images: [LandingPic1, LandingPic2, LandingPic3],
     },
 
     customerPanel: {
-      title: "Customer Panel Experience",
+      title: "Halazone-Management",
       paragraphs: [
-        "The customer panel offers users a seamless and user-friendly experience for managing orders and tracking activities.",
-        "Responsive design ensures accessibility across all devices, providing customers with consistent performance and usability.",
+        "The management system serves as the core control center of the platform, responsible for managing fleets, nodes, and microhubs.",
+        "It acts as the central backbone of all operational systems, providing comprehensive control over workflows, system configurations, and access levels. The platform defines and manages role-based access for administrators and supervisors, ensuring secure, structured, and efficient system operations.",
       ],
-      images: [
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-        "https://images.unsplash.com/photo-1517433456452-f9633a875f6f",
-        "https://images.unsplash.com/photo-1581090700227-1e37b190418e",
-      ],
+
+      images: [fleetPic, AdminDashboardPic, bundleListPic],
     },
 
     supervisorApp: {
-      title: "Supervisor Mobile Application",
+      title: "Halazone-Supervisor",
       paragraphs: [
-        "The supervisor app enables real-time monitoring of operations and team activities in the field.",
-        "It is optimized for mobile usage, allowing supervisors to manage tasks efficiently on the go.",
+        "The supervisor application is a Progressive Web App (PWA) designed for overseeing microhub operations.",
+        "It enables supervisors to monitor fleet behavior and shipment activities within their assigned regions in real time, providing full operational visibility and control.",
       ],
-      images: [
-        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
-        "https://images.unsplash.com/photo-1551650975-87deedd944c3",
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-      ],
+      images: [supervisor1, supervisor2, supervisor3],
     },
 
     landingPage: {
-      title: "Landing Page & Marketing Website",
+      title: "Halazone-Panel",
       paragraphs: [
-        "The landing page is built with performance and SEO in mind to attract and convert users effectively.",
-        "Clear messaging and visual hierarchy help communicate the product value within seconds.",
+        "The Halazone customer panel is designed to provide users with a seamless experience for placing and managing their orders.",
+        "Based on the available services, customers can select their desired destination and easily register orders tailored to their needs.",
       ],
-      images: [
-        "https://images.unsplash.com/photo-1487014679447-9f8336841d58",
-        "https://images.unsplash.com/photo-1497215728101-856f4ea42174",
-        "https://images.unsplash.com/photo-1504805572947-34fad45aed93",
-      ],
+      images: [userInfo, wallet, parcelDetail],
     },
   },
 };
