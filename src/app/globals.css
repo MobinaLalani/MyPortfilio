@@ -9,7 +9,12 @@
   --card: #ffffff;
 }
 
-
+@font-face {
+    font-family: 'YekanBakh';
+    src: url('../../public/font/Caprasimo-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -37,7 +42,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: 'YekanBakh', sans-serif;
 }
 
 .mySwiper {

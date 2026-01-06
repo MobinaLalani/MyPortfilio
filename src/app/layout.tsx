@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import SmoothScrollProvider from "../provider/SmoothScrollProvider";
 import Footer from "@/components/Footer";
-import { didot } from "./fonts";
+
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${didot.variable} ${geistMono.variable} antialiased  overflow-x-hidden`}>
+      <body className={` ${geistMono.variable} antialiased  overflow-x-hidden`}>
         <SmoothScrollProvider>
            <div className="pt-14">
 
