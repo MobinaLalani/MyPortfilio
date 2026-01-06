@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Lenis from "@studio-freight/lenis";
 
-import Pic1 from "/public/image/frontendPic.jpg";
-import Pic2 from "/public/image/animationPic.jpg";
+import Pic1 from "../../../../public/image/frontendPic.jpg";
+import Pic2 from "../../../../public/image/animationPic.jpg";
 
 export default function HorizontalScrollRows() {
   const row1Ref = useRef<HTMLElement>(null);
