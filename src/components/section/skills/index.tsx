@@ -50,18 +50,23 @@ return (
     {/* Content */}
     <div className="relative z-20 grid grid-cols-1 md:grid-cols-2 gap-12 px-6 md:px-16 py-20 text-white items-center">
       {/* Right – About */}
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center ml-8">
         <h2 className="mb-10 text-4xl md:text-5xl font-serif">
           About My Skills
         </h2>
 
-        <ul className="space-y-4 max-w-xl">
+        <ul className="space-y-4 max-w-xl ">
           {[
-            "Strong knowledge of React & Next.js",
-            "Clean and scalable component architecture",
-            "Tailwind CSS & modern UI design",
-            "REST API & async data handling",
-            "Performance optimization & SEO",
+            "React js & ReactQuery",
+            "TypeScript",
+            "HTML 5 & Css 3",
+            "JavaScript",
+            "Tailwind Css & Bootstrap",
+            "Restful API Integration",
+            "StateManagement (Redux,Zustand)",
+            "Responsive & Adaptive Design",
+            "version control( Git )",
+            "Next .js",
           ].map((item, index) => (
             <li key={index} className="flex items-start gap-3">
               <svg

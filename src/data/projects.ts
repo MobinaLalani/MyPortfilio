@@ -70,23 +70,23 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Mapbox", "TailwindCSS"],
     repo: "https://github.com/",
   },
-  {
-    slug: "dashboard-analytics",
-    title: "Dashboard Analytics",
-    img: HalazLogo,
-    description:
-      "Analytical dashboard with interactive charts and advanced filters.",
-    stack: ["Next.js", "Zustand", "Chart.js"],
-    demo: "https://example.com",
-  },
-  {
-    slug: "landing-page",
-    title: "Landing Page",
-    img: HalazLogo,
-    description: "SEO-optimized landing page with fast load times.",
-    stack: ["Next.js", "TailwindCSS", "SEO"],
-    repo: "https://github.com/",
-  },
+  // {
+  //   slug: "dashboard-analytics",
+  //   title: "Dashboard Analytics",
+  //   img: HalazLogo,
+  //   description:
+  //     "Analytical dashboard with interactive charts and advanced filters.",
+  //   stack: ["Next.js", "Zustand", "Chart.js"],
+  //   demo: "https://example.com",
+  // },
+  // {
+  //   slug: "landing-page",
+  //   title: "Landing Page",
+  //   img: HalazLogo,
+  //   description: "SEO-optimized landing page with fast load times.",
+  //   stack: ["Next.js", "TailwindCSS", "SEO"],
+  //   repo: "https://github.com/",
+  // },
 ];
 
 // ======================================================

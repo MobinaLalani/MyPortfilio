@@ -1,7 +1,8 @@
 
 import Hero from "./hero/page";
 import About from "./about/page";
-import FrontText from "../components/section/frontText/index"
+import FrontText from "../components/section/frontText/index";
+import Content from './contact/page';
 import Skills from "./skills/page";
 import Projects from "./projects/page";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <About/>
       <Skills/>
       <Projects/>
+      <Content/>
     </div>
   );
 }
